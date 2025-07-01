@@ -1,0 +1,63 @@
+{
+  "name": "jeune-diplome-dapp",
+  "version": "1.0.0",
+  "description": "DApp pour la vérification d'authenticité des diplômes avec NFT et tokens",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:coverage": "hardhat coverage",
+    "deploy:localhost": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:goerli": "hardhat run scripts/deploy.js --network goerli",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "verify:goerli": "hardhat verify --network goerli",
+    "node": "hardhat node",
+    "console": "hardhat console",
+    "clean": "hardhat clean",
+    "audit": "node scripts/audit.js",
+    "frontend:install": "cd frontend && npm install",
+    "frontend:start": "cd frontend && npm start",
+    "frontend:build": "cd frontend && npm build",
+    "dev": "concurrently \"npm run node\" \"npm run frontend:start\"",
+    "setup": "chmod +x setup.sh && ./setup.sh",
+    "full-deploy": "npm run deploy:localhost && npm run update-frontend-config"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "dapp",
+    "nft",
+    "diploma",
+    "education",
+    "verification",
+    "smart-contracts"
+  ],
+  "author": "Votre nom",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "chai": "^4.3.7",
+    "concurrently": "^7.6.0",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.14.4",
+    "hardhat": "^2.22.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plouski/jeune-diplome-dapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Plouski/jeune-diplome-dapp/issues"
+  },
+  "homepage": "https://github.com/Plouski/jeune-diplome-dapp#readme"
+}
