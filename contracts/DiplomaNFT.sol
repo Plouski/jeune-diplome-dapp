@@ -39,7 +39,8 @@ contract DiplomaNFT is ERC721, ERC721URIStorage, Ownable {
     event InstitutionVerified(address indexed institution, bool status);
     
     modifier onlyVerifiedInstitution() {
-        require(verifiedInstitutions[msg.sender], "Only verified institutions can mint");
+        require(diplomaRegistry != address(0), "Registry not set");
+        // Déléguer la vérification au registre principal
         _;
     }
     
@@ -67,7 +68,7 @@ contract DiplomaNFT is ERC721, ERC721URIStorage, Ownable {
         string memory speciality,
         string memory mention,
         string memory ipfsHash,
-        string memory tokenURI
+        string memory tokenUri
     ) external onlyVerifiedInstitution returns (uint256) {
         require(bytes(studentName).length > 0, "Student name required");
         require(bytes(diplomaName).length > 0, "Diploma name required");
@@ -77,7 +78,7 @@ contract DiplomaNFT is ERC721, ERC721URIStorage, Ownable {
         _tokenIdCounter.increment();
         
         _safeMint(student, tokenId);
-        _setTokenURI(tokenId, tokenURI);
+        _setTokenURI(tokenId, tokenUri);
         
         diplomaData[tokenId] = DiplomaMetadata({
             studentName: studentName,

@@ -85,7 +85,7 @@ contract DiplomaRegistry is Ownable, ReentrancyGuard, Pausable {
         string memory country,
         string memory website,
         address agentAddress
-    ) external {
+    ) external whenNotPaused {
         require(!registeredInstitutions[agentAddress], "Institution already registered");
         require(bytes(name).length > 0, "Name required");
         
@@ -107,7 +107,7 @@ contract DiplomaRegistry is Ownable, ReentrancyGuard, Pausable {
     function verifyInstitution(address institutionAddress) external onlyOwner {
         require(registeredInstitutions[institutionAddress], "Institution not registered");
         institutions[institutionAddress].isVerified = true;
-        diplomaNFT.verifyInstitution(institutionAddress, true);
+        // Note: On appelle directement verifyInstitution sur le NFT depuis le owner du registry
     }
     
     // ===== GESTION DES ENTREPRISES =====
@@ -117,7 +117,7 @@ contract DiplomaRegistry is Ownable, ReentrancyGuard, Pausable {
         string memory country,
         string memory website,
         address agentAddress
-    ) external {
+    ) external whenNotPaused {
         require(!registeredCompanies[agentAddress], "Company already registered");
         require(bytes(name).length > 0, "Name required");
         
@@ -152,7 +152,7 @@ contract DiplomaRegistry is Ownable, ReentrancyGuard, Pausable {
         string memory internshipCompany,
         uint256 internshipStartDate,
         uint256 internshipEndDate
-    ) external onlyRegisteredInstitution {
+    ) external onlyRegisteredInstitution whenNotPaused {
         require(!registeredStudents[studentAddress], "Student already registered");
         require(bytes(name).length > 0, "Name required");
         
@@ -204,7 +204,9 @@ contract DiplomaRegistry is Ownable, ReentrancyGuard, Pausable {
         string memory tokenURI
     ) external onlyRegisteredInstitution returns (uint256) {
         require(registeredStudents[studentAddress], "Student not registered");
+        require(institutions[msg.sender].isVerified, "Institution not verified");
         
+        // Appeler directement le NFT en tant que registre autorisé
         uint256 diplomaId = diplomaNFT.mintDiploma(
             studentAddress,
             string(abi.encodePacked(students[studentAddress].name, " ", students[studentAddress].surname)),
