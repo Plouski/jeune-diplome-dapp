@@ -37,7 +37,7 @@ contract JeuneDiplomeToken is ERC20, Ownable, ReentrancyGuard {
         require(msg.value > 0, "Must send ETH");
         require(msg.value % TOKEN_PRICE == 0, "Invalid ETH amount");
         
-        uint256 tokenAmount = (msg.value / TOKEN_PRICE) * TOKENS_PER_ETH;
+        uint256 tokenAmount = (msg.value / TOKEN_PRICE) * TOKENS_PER_ETH * 10**decimals();
         require(balanceOf(owner()) >= tokenAmount, "Insufficient token supply");
         
         _transfer(owner(), msg.sender, tokenAmount);
@@ -46,17 +46,17 @@ contract JeuneDiplomeToken is ERC20, Ownable, ReentrancyGuard {
     }
     
     function rewardEvaluation(address evaluator) external onlyDiplomaRegistry {
-        require(balanceOf(owner()) >= EVALUATION_REWARD, "Insufficient token supply");
-        _transfer(owner(), evaluator, EVALUATION_REWARD);
+        require(balanceOf(owner()) >= EVALUATION_REWARD * 10**decimals(), "Insufficient token supply");
+        _transfer(owner(), evaluator, EVALUATION_REWARD * 10**decimals());
         
-        emit EvaluationRewarded(evaluator, EVALUATION_REWARD);
+        emit EvaluationRewarded(evaluator, EVALUATION_REWARD * 10**decimals());
     }
     
     function payVerificationFee(address from) external onlyDiplomaRegistry {
-        require(balanceOf(from) >= VERIFICATION_FEE, "Insufficient balance");
-        _transfer(from, diplomaRegistry, VERIFICATION_FEE);
+        require(balanceOf(from) >= VERIFICATION_FEE * 10**decimals(), "Insufficient balance");
+        _transfer(from, diplomaRegistry, VERIFICATION_FEE * 10**decimals());
         
-        emit VerificationFeePaid(from, VERIFICATION_FEE);
+        emit VerificationFeePaid(from, VERIFICATION_FEE * 10**decimals());
     }
     
     function withdrawETH() external onlyOwner {
@@ -71,7 +71,7 @@ contract JeuneDiplomeToken is ERC20, Ownable, ReentrancyGuard {
         return TOKEN_PRICE;
     }
     
-    function getVerificationFee() external pure returns (uint256) {
-        return VERIFICATION_FEE;
+    function getVerificationFee() external view returns (uint256) {
+        return VERIFICATION_FEE * 10**decimals();
     }
 }
