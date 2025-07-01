@@ -6,7 +6,13 @@ async function main() {
     // Récupérer les comptes
     const [deployer] = await hre.ethers.getSigners();
     console.log("Déploiement avec le compte:", deployer.address);
-    console.log("Balance du compte:", hre.ethers.formatEther(await hre.ethers.provider.getBalance(deployer.address)));
+    
+    try {
+        const balance = await hre.ethers.provider.getBalance(deployer.address);
+        console.log("Balance du compte:", hre.ethers.formatEther(balance), "ETH");
+    } catch (error) {
+        console.log("Erreur balance:", error.message);
+    }
     
     // 1. Déployer le token ERC20
     console.log("\n📄 Déploiement du JeuneDiplomeToken...");
@@ -35,15 +41,12 @@ async function main() {
     // 4. Configuration des autorisations
     console.log("\n⚙️ Configuration des autorisations...");
     
-    // Configurer le token pour qu'il reconnaisse le registry
     await token.setDiplomaRegistry(registryAddress);
     console.log("✅ Token configuré avec le registry");
     
-    // Configurer le NFT pour qu'il reconnaisse le registry
     await nft.setDiplomaRegistry(registryAddress);
     console.log("✅ NFT configuré avec le registry");
     
-    // Le owner du registry doit aussi être owner du NFT pour vérifier les institutions
     const currentNFTOwner = await nft.owner();
     console.log("✅ Owner du NFT:", currentNFTOwner);
     
@@ -53,22 +56,32 @@ async function main() {
     console.log("- DiplomaNFT:", nftAddress);
     console.log("- DiplomaRegistry:", registryAddress);
     
-    // Sauvegarder les adresses dans un fichier
+    // Sauvegarder les adresses
     const fs = require('fs');
     const addresses = {
         JeuneDiplomeToken: tokenAddress,
         DiplomaNFT: nftAddress,
         DiplomaRegistry: registryAddress,
-        deployer: deployer.address
+        deployer: deployer.address,
+        network: hre.network.name,
+        deployedAt: new Date().toISOString()
     };
     
     fs.writeFileSync('deployed-addresses.json', JSON.stringify(addresses, null, 2));
     console.log("\n💾 Adresses sauvegardées dans deployed-addresses.json");
     
-    // Instructions pour la suite
     console.log("\n📝 Prochaines étapes:");
-    console.log("1. Vérifier les contrats sur Etherscan (si mainnet/testnet)");
-    console.log("2. Ajouter des institutions vérifiées");
-    console.log("3. Déployer le frontend");
-    console.log("4. Effectuer l'audit de sécurité avec Mythril");
+    console.log("1. Configurer le frontend");
+    console.log("2. Lancer: cd frontend && npm start");
+    console.log("3. Tester l'application");
 }
+
+main()
+    .then(() => {
+        console.log("\n✅ Script terminé avec succès!");
+        process.exit(0);
+    })
+    .catch((error) => {
+        console.error("\n❌ Erreur lors du déploiement:", error);
+        process.exit(1);
+    });
