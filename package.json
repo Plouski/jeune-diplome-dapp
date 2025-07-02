@@ -7,46 +7,26 @@
     "test": "test"
   },
   "scripts": {
-    "compile": "hardhat compile",
-    "test": "hardhat test",
-    "test:coverage": "hardhat coverage",
-    "deploy:localhost": "hardhat run scripts/deploy.js --network localhost",
-    "deploy:goerli": "hardhat run scripts/deploy.js --network goerli",
-    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
-    "verify:goerli": "hardhat verify --network goerli",
-    "node": "hardhat node",
-    "console": "hardhat console",
-    "clean": "hardhat clean",
+    "compile": "npx hardhat compile",
+    "test": "npx hardhat test",
+    "test:verbose": "npx hardhat test --verbose",
+    "deploy": "npx hardhat run scripts/deploy.js",
+    "deploy:local": "npx hardhat run scripts/deploy.js --network localhost",
+    "node": "npx hardhat node",
+    "clean": "npx hardhat clean",
     "audit": "node scripts/audit.js",
-    "frontend:install": "cd frontend && npm install",
-    "frontend:start": "cd frontend && npm start",
-    "frontend:build": "cd frontend && npm build",
-    "dev": "concurrently \"npm run node\" \"npm run frontend:start\"",
-    "setup": "chmod +x setup.sh && ./setup.sh",
-    "full-deploy": "npm run deploy:localhost && npm run update-frontend-config"
+    "size": "npx hardhat size-contracts",
+    "help": "npx hardhat help"
   },
-  "keywords": [
-    "blockchain",
-    "ethereum",
-    "dapp",
-    "nft",
-    "diploma",
-    "education",
-    "verification",
-    "smart-contracts"
-  ],
-  "author": "Votre nom",
+  "keywords": [],
+  "author": "Étudiant M2 - Projet Blockchain",
   "license": "MIT",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "chai": "^4.3.7",
-    "concurrently": "^7.6.0",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.6.1",
     "ethers": "^6.14.4",
-    "hardhat": "^2.22.0"
-  },
-  "dependencies": {
-    "@openzeppelin/contracts": "^4.9.3"
+    "hardhat": "^2.25.0"
   },
   "engines": {
     "node": ">=16.0.0",
@@ -59,5 +39,8 @@
   "bugs": {
     "url": "https://github.com/Plouski/jeune-diplome-dapp/issues"
   },
-  "homepage": "https://github.com/Plouski/jeune-diplome-dapp#readme"
+  "homepage": "https://github.com/Plouski/jeune-diplome-dapp#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.6"
+  }
 }
