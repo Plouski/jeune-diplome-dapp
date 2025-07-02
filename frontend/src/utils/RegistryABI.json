@@ -1,0 +1,1213 @@
+{
+      "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_nftAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "company",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "CompanyRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "diplomaId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "verifier",
+          "type": "address"
+        }
+      ],
+      "name": "DiplomaVerified",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "institution",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "InstitutionRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Paused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "company",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "evaluation",
+          "type": "uint256"
+        }
+      ],
+      "name": "StudentEvaluated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "StudentRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Unpaused",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "companies",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "sector",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "dateCreation",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "classificationTaille",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "country",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "adresse",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "courriel",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "telephone",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "website",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "agentAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "isVerified",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "registrationDate",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "studentAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "diplomaName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "speciality",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "mention",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "dateObtention",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "tokenURI",
+          "type": "string"
+        }
+      ],
+      "name": "createDiploma",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "diplomaNFT",
+      "outputs": [
+        {
+          "internalType": "contract DiplomaNFT",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "diplomaToStudent",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "studentAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "evaluation",
+          "type": "uint256"
+        }
+      ],
+      "name": "evaluateStudent",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "companyAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getCompanyInfo",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "sector",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "dateCreation",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "classificationTaille",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "country",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "adresse",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "courriel",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "telephone",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "website",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "agentAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "isVerified",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "registrationDate",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct DiplomaRegistry.Company",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "institutionAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getInstitutionInfo",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "institutionType",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "country",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "adresse",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "website",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "idAgent",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "agentAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "isVerified",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "registrationDate",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct DiplomaRegistry.Institution",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "studentAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getStudentDiplomas",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "studentAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getStudentInfo",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "surname",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "birthDate",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "sexe",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "nationality",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "statutCivil",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "adresse",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "courriel",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "telephone",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "section",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "sujetPFE",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "idEES",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "idEntrepriseStage",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "nomPrenomMaitre",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "internshipStartDate",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "internshipEndDate",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "evaluation",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "studentAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "registrationDate",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "hasEvaluation",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct DiplomaRegistry.Student",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "institutions",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "institutionType",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "country",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "adresse",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "website",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "idAgent",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "agentAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "isVerified",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "registrationDate",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "sector",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "dateCreation",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "classificationTaille",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "country",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "adresse",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "courriel",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "telephone",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "website",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "agentAddress",
+          "type": "address"
+        }
+      ],
+      "name": "registerCompany",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "institutionType",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "country",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "adresse",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "website",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "idAgent",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "agentAddress",
+          "type": "address"
+        }
+      ],
+      "name": "registerInstitution",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "studentAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "surname",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "birthDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "sexe",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "nationality",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "statutCivil",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "adresse",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "courriel",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "telephone",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "section",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "sujetPFE",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "idEntrepriseStage",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "nomPrenomMaitre",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "internshipStartDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "internshipEndDate",
+          "type": "uint256"
+        }
+      ],
+      "name": "registerStudent",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "registeredCompanies",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "registeredInstitutions",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "registeredStudents",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "studentDiplomas",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "students",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "surname",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "birthDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "sexe",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "nationality",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "statutCivil",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "adresse",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "courriel",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "telephone",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "section",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "sujetPFE",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "idEES",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "idEntrepriseStage",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "nomPrenomMaitre",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "internshipStartDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "internshipEndDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "evaluation",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "studentAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "registrationDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "hasEvaluation",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "contract JeuneDiplomeToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "unpause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newNFTAddress",
+          "type": "address"
+        }
+      ],
+      "name": "updateNFTAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newTokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "updateTokenAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "companyAddress",
+          "type": "address"
+        }
+      ],
+      "name": "verifyCompany",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "diplomaId",
+          "type": "uint256"
+        }
+      ],
+      "name": "verifyDiploma",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "institutionAddress",
+          "type": "address"
+        }
+      ],
+      "name": "verifyInstitution",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+# .dockerignore pour DApp Jeune Diplômé
+
+# Node modules (sera installé dans le container)
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Artifacts de compilation (sera regénéré)
+artifacts
+cache
+typechain-types
+
+# Rapports d'audit (sera regénéré)
+audit-reports/*.txt
+audit-reports/*.md
+
+# Fichiers de développement local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Fichiers Git
+.git
+.gitignore
+README.md
+.github
+
+# Fichiers de documentation
+docs/
+*.md
+
+# Fichiers temporaires
+.tmp
+temp
+*.tmp
+
+# Logs
+logs
+*.log
+
+# Coverage reports
+coverage
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Hardhat files
+.openzeppelin
+
+# Solidity coverage
+coverage.json
+coverageEnv

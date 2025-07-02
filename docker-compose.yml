@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # Service principal de la DApp
+  dapp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: jeune-diplome-dapp
+    volumes:
+      # Montage du code source pour le développement
+      - .:/app
+      - /app/node_modules
+      - ./audit-reports:/app/audit-reports
+    ports:
+      - "8545:8545"  # Port Hardhat node
+    environment:
+      - NODE_ENV=development
+      - HARDHAT_NETWORK=hardhat
+    networks:
+      - blockchain-network
+    command: npm run node
+    
+  # Service pour les tests et audits
+  audit:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: mythril-audit
+    volumes:
+      - .:/app
+      - ./audit-reports:/app/audit-reports
+    environment:
+      - NODE_ENV=development
+    networks:
+      - blockchain-network
+    command: npm run audit
+    depends_on:
+      - dapp
+    profiles:
+      - audit
+
+  # Service pour les tests
+  test:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: hardhat-test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=test
+    networks:
+      - blockchain-network
+    command: npm run test
+    profiles:
+      - test
+
+networks:
+  blockchain-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+  audit_reports:
